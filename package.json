@@ -1,0 +1,25 @@
+{
+  "name": "ansi-diff-stream",
+  "version": "0.0.0",
+  "description": "WIP - nothing to see here",
+  "main": "index.js",
+  "dependencies": {
+    "through2": "^2.0.1"
+  },
+  "devDependencies": {
+    "standard": "^7.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mafintosh/ansi-diff-stream.git"
+  },
+  "scripts": {
+    "test": "standard"
+  },
+  "author": "Mathias Buus (@mafintosh)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mafintosh/ansi-diff-stream/issues"
+  },
+  "homepage": "https://github.com/mafintosh/ansi-diff-stream"
+}
