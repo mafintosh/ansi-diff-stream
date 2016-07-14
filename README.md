@@ -7,6 +7,8 @@ If you pipe this to a terminal it will update the output with minimal changes.
 npm install ansi-diff-stream
 ```
 
+[![build status](http://img.shields.io/travis/mafintosh/ansi-diff-stream.svg?style=flat)](http://travis-ci.org/mafintosh/ansi-diff-stream)
+
 ## Usage
 
 ``` js
