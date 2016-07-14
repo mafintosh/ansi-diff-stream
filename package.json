@@ -1,7 +1,7 @@
 {
   "name": "ansi-diff-stream",
   "version": "0.0.0",
-  "description": "WIP - nothing to see here",
+  "description": "A transform stream that diffs input buffers and outputs the diff as ANSI. If you pipe this to a terminal it will update the output with minimal changes.",
   "main": "index.js",
   "dependencies": {
     "through2": "^2.0.1"
