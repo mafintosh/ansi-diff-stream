@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+var differ = require('.')
+
+process.stdin.pipe(differ()).pipe(process.stdout)

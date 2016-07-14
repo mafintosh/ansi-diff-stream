@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A transform stream that diffs input buffers and outputs the diff as ANSI. If you pipe this to a terminal it will update the output with minimal changes.",
   "main": "index.js",
+  "bin": { "ansi-diff-stream": "./bin.js" },
   "dependencies": {
     "through2": "^2.0.1"
   },
