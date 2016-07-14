@@ -49,6 +49,23 @@ Create a new diff stream. You should pipe it to a ansi capable stream.
 
 Will reset the diff. Useful you print something manually inbetween updates.
 
+## CLI
+
+There is a command line tools available as
+
+```
+npm install -g ansi-diff-stream
+nc -l 10000 | ansi-diff-stream
+```
+
+In another terminal
+
+```
+nc localhost 10000
+hello
+world
+```
+
 ## License
 
 MIT
