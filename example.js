@@ -53,3 +53,7 @@ diff.on('data', function (data) {
   frameSize = data.length
   process.stdout.write(data)
 })
+
+process.stdout.on('resize', function () {
+  diff.reset()
+})
