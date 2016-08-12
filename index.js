@@ -1,4 +1,5 @@
 var through = require('through2')
+var isAnsi = require('ansi-regex')
 
 var MOVE_LEFT = Buffer('1b5b3130303044', 'hex')
 var MOVE_UP = Buffer('1b5b3141', 'hex')
@@ -15,7 +16,7 @@ function diffLine (older, newer, bufs) {
     if (older[i] !== newer[i]) break
   }
 
-  if (!i) {
+  if (!i || isAnsi().test(newer.slice(0, i))) { // ansi diffing doesn't work right now
     bufs.push(CLEAR_LINE)
     bufs.push(Buffer(newer + '\n'))
   } else {
