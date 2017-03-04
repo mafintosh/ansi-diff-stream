@@ -49,6 +49,10 @@ Create a new diff stream. You should pipe it to a ansi capable stream.
 
 Will reset the diff. Useful you print something manually inbetween updates.
 
+#### `stream.clear()`
+
+Clear the last printed output from the screen. Similar to doing `stream.write('')`.
+
 ## CLI
 
 There is a command line tools available as

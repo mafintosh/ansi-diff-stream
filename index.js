@@ -38,10 +38,16 @@ function createStream () {
     }
   }
 
+  stream.clear = function () {
+    stream.reset()
+    stream.write('')
+  }
+
   return stream
 
   function write (data, enc, cb) {
-    var lines = data.toString().split('\n')
+    var str = data.toString()
+    var lines = str ? str.split('\n') : []
     var diff = Array(lines.length)
     var pos = -1
     var i = 0
