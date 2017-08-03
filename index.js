@@ -92,6 +92,7 @@ function createStream () {
       }
       if (diff[pos] > 0) {
         if (diff[pos] === 1) diffLine(prev[pos], lines[pos], bufs)
+        else if (pos === diff.length - 1) bufs.push(Buffer(lines[pos]))
         else bufs.push(Buffer(lines[pos] + '\n'))
       } else {
         bufs.push(MOVE_DOWN)
