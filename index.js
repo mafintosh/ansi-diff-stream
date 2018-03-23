@@ -1,11 +1,12 @@
 var through = require('through2')
 var isAnsi = require('ansi-regex')
+var bufferFrom = require('buffer-from')
 
-var MOVE_LEFT = Buffer('1b5b3130303044', 'hex')
-var MOVE_UP = Buffer('1b5b3141', 'hex')
-var MOVE_DOWN = Buffer('1b5b3142', 'hex')
-var CLEAR_LINE = Buffer('1b5b304b', 'hex')
-var NEWLINE = Buffer('\n')
+var MOVE_LEFT = bufferFrom('1b5b3130303044', 'hex')
+var MOVE_UP = bufferFrom('1b5b3141', 'hex')
+var MOVE_DOWN = bufferFrom('1b5b3142', 'hex')
+var CLEAR_LINE = bufferFrom('1b5b304b', 'hex')
+var NEWLINE = bufferFrom('\n')
 
 module.exports = createStream
 
@@ -18,11 +19,11 @@ function diffLine (older, newer, bufs) {
 
   if (!i || isAnsi().test(newer.slice(0, i))) { // ansi diffing doesn't work right now
     bufs.push(CLEAR_LINE)
-    bufs.push(Buffer(newer + '\n'))
+    bufs.push(bufferFrom(newer + '\n'))
   } else {
     var changed = newer.slice(i)
-    bufs.push(Buffer('1b5b' + Buffer('' + i).toString('hex') + '43', 'hex'))
-    bufs.push(Buffer(changed))
+    bufs.push(bufferFrom('1b5b' + bufferFrom('' + i).toString('hex') + '43', 'hex'))
+    bufs.push(bufferFrom(changed))
     bufs.push(CLEAR_LINE)
     bufs.push(NEWLINE)
   }
@@ -80,7 +81,7 @@ function createStream () {
 
     if (pos > -1) {
       var missing = Math.min(prev.length, lines.length) - pos
-      bufs.push(Buffer('1b5b' + Buffer('' + missing).toString('hex') + '41', 'hex'))
+      bufs.push(bufferFrom('1b5b' + bufferFrom('' + missing).toString('hex') + '41', 'hex'))
     } else {
       pos = prev.length
     }
@@ -92,8 +93,8 @@ function createStream () {
       }
       if (diff[pos] > 0) {
         if (diff[pos] === 1) diffLine(prev[pos], lines[pos], bufs)
-        // else if (pos === diff.length - 1) bufs.push(Buffer(lines[pos]))
-        else bufs.push(Buffer(lines[pos] + '\n'))
+        // else if (pos === diff.length - 1) bufs.push(bufferFrom(lines[pos]))
+        else bufs.push(bufferFrom(lines[pos] + '\n'))
       } else {
         bufs.push(MOVE_DOWN)
       }

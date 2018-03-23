@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "ansi-regex": "^2.0.0",
+    "buffer-from": "^1.0.0",
     "through2": "^2.0.1"
   },
   "devDependencies": {
